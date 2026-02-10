@@ -16,7 +16,9 @@ export default function App() {
         renderItem= {({item, index}) => {
           return <Item title = {`${index} ${item.breed}`} />;
         }}
-        keyExtractor={}
+        keyExtractor={(item) => item.breed}
+
+        />
 
 
 
@@ -32,6 +34,7 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
-  scroll: { paddingVertical: 10 },
+  container: { flex: 1, width: "100%" },
+  list: { flex: 1, width: "100%" },
+  listContent: { paddingVertical: 10 },
 });
