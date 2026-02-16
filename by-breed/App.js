@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, StyleSheet, FlatList, } from "react-native";
+import { View, StyleSheet, FlatList } from "react-native";
 
 
 import { cats } from "./breed.js";
@@ -14,7 +14,7 @@ export default function App() {
         contentContainerStyle = {styles.listContent}
         data = {cats}
         renderItem= {({item, index}) => {
-          return <Item title = {`${index} ${item.breed}`} />;
+          return <Item animal={item} />;
         }}
         keyExtractor={(item) => item.breed}
 

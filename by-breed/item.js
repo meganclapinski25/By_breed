@@ -1,13 +1,35 @@
 import React from 'react'
-import { View, Text,  StyleSheet } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 
-function Item({ title }) {
+function FeatureItem({ label, value }) {
   return (
-    <View style = {styles.row}>
-      <Text style = {styles.title}>{title}</Text>
+    <View style={styles.featureRow}>
+      <Text style={styles.featureLabel}>{label}</Text>
+      <Text style={styles.featureValue}>{value}</Text>
     </View>
-  );
+  )
 }
+
+function Item({ animal }) {
+  const { breed, ...features } = animal ?? {}
+  const featureKeys = Object.keys(features ?? {})
+
+  return (
+    <View style={styles.row}>
+      <Text style={styles.title}>{breed}</Text>
+      {featureKeys.length === 0 ? (
+        <Text style={styles.emptyText}>No features listed.</Text>
+      ) : (
+        <View style={styles.features}>
+          {featureKeys.map((key) => (
+            <FeatureItem key={key} label={key} value={features[key]} />
+          ))}
+        </View>
+      )}
+    </View>
+  )
+}
+
 const styles = StyleSheet.create({
   row: {
     width: "100%",
@@ -18,8 +40,30 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   title: {
-    fontSize: 18, // large enough to read
+    fontSize: 18,
     color: "#111",
+    marginBottom: 8,
   },
-});
+  features: {
+    gap: 6,
+  },
+  featureRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  featureLabel: {
+    fontSize: 16,
+    color: "#333",
+    flex: 1,
+  },
+  featureValue: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: "#333",
+  },
+  emptyText: {
+    fontSize: 14,
+    color: "#666",
+  },
+})
 export default Item
