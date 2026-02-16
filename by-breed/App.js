@@ -1,5 +1,6 @@
 import React from "react";
-import { View, StyleSheet, ScrollView } from "react-native";
+import { View, StyleSheet, ScrollView, SafeAreaView, Text } from "react-native";
+
 
 
 import { cats } from "./breed.js";
@@ -34,7 +35,9 @@ const styles = StyleSheet.create({
   },
   header: {
     paddingHorizontal: 16,
-    paddingVertical: 12,
+    paddingTop: 60,
+    paddingBottom: 20,
+    alignItems: "center",
   },
   headerText: {
     fontSize: 24,
