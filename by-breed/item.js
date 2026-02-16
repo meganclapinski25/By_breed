@@ -1,11 +1,14 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
+const rating = (value) => "★".repeat(value) + "☆".repeat(5-value);
+
+
 function FeatureItem({ label, value }) {
   return (
     <View style={styles.featureRow}>
       <Text style={styles.featureLabel}>{label}</Text>
-      <Text style={styles.featureValue}>{value}</Text>
+      <Text style={styles.featureValue}>{rating(value)}</Text>
     </View>
   )
 }
