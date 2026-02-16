@@ -14,7 +14,7 @@ export default function App() {
         showsVerticalScrollIndicator={true}
       >
         <View style={styles.header}>
-          <Text style={styles.headerText}>Breeds</Text>
+          <Text style={styles.headerText}>Cat Breeds</Text>
         </View>
         {cats.map((animal) => (
           <Item key={animal.breed} animal={animal} />
