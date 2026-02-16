@@ -1,24 +1,21 @@
 import React from "react";
-import { View, StyleSheet, FlatList } from "react-native";
-
+import { View, StyleSheet, ScrollView } from "react-native";
 
 import { cats } from "./breed.js";
 import Item from "./item.js";
 
 export default function App() {
   return (
-
-    <View style = {styles.container}>
-      <FlatList 
-        style = {styles.list}
-        contentContainerStyle = {styles.listContent}
-        data = {cats}
-        renderItem= {({item, index}) => {
-          return <Item animal={item} />;
-        }}
-        keyExtractor={(item) => item.breed}
-
-        />
+    <View style={styles.container}>
+      <ScrollView
+        style={styles.scroll}
+        contentContainerStyle={styles.scrollContent}
+        showsVerticalScrollIndicator={true}
+      >
+        {cats.map((animal) => (
+          <Item key={animal.breed} animal={animal} />
+        ))}
+      </ScrollView>
 
 
 
@@ -34,7 +31,17 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, width: "100%" },
-  list: { flex: 1, width: "100%" },
-  listContent: { paddingVertical: 10 },
+  container: {
+    flex: 1,
+    width: "100%",
+    alignSelf: "stretch",
+  },
+  scroll: {
+    flex: 1,
+    width: "100%",
+    minHeight: 0, // lets ScrollView constrain height and scroll
+  },
+  scrollContent: {
+    paddingVertical: 10,
+  },
 });
